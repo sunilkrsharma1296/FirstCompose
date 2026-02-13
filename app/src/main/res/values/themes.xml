@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.FirstCompose" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+    <item name="android:windowSoftInputMode">adjustResize</item>
+    <item name="windowNoTitle">true</item>
+    <item name="android:windowLightStatusBar">true</item>
+
+    </style>
+
+</resources>
