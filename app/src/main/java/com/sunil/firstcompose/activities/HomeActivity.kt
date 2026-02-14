@@ -1,4 +1,4 @@
-package com.sunil.firstcompose
+package com.sunil.firstcompose.activities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 import com.sunil.firstcompose.itemlayout.CategoryListScreen
 
