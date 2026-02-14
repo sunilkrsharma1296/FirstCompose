@@ -67,13 +67,25 @@ class MainActivity : ComponentActivity() {
                 .fillMaxSize()
                 .windowInsetsPadding(WindowInsets.systemBars) // 🔥 THIS FIXES OVERLAP
         ) {
-            FirstScreen {
-                startActivity(
-                    Intent(this@MainActivity, HomeActivity::class.java)
-                )
-            }
+
+            FirstScreen(
+                onHomeClick = {
+                    startActivity(
+                        Intent(this@MainActivity, HomeActivity::class.java)
+                    )
+                },
+
+                onNotificationClick = {
+                    startActivity(
+                        Intent(this@MainActivity, NotificationActivity::class.java)
+                    )
+                }
+
+
+            )
         }
     }
+
 
     @Preview
     @Composable
@@ -201,7 +213,8 @@ class MainActivity : ComponentActivity() {
 
 
     @Composable
-    fun FirstScreen(onNextClick: () -> Unit) {
+    fun FirstScreen(onHomeClick: () -> Unit,
+                    onNotificationClick:() -> Unit) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -221,12 +234,17 @@ class MainActivity : ComponentActivity() {
 
             Spacer(modifier = Modifier.height(26.dp))
 
-            Button(onClick = onNextClick) {
-                Text(text = "Next")
+            Button(onClick = onHomeClick) {
+                Text(text = "Go To Home")
+            }
+
+            Spacer(modifier = Modifier.height(26.dp))
+
+            Button(onClick = onNotificationClick) {
+                Text(text = "Go To Notification")
             }
         }
     }
-
 
 
     @Composable

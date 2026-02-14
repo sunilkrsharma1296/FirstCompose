@@ -11,9 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstCompose">
+
         <activity
             android:name=".activities.HomeActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".activities.NotificationActivity"
+            android:exported="false" />
+
         <activity
             android:name=".activities.MainActivity"
             android:exported="true"
