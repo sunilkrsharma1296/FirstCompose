@@ -79,6 +79,12 @@ class MainActivity : ComponentActivity() {
                     startActivity(
                         Intent(this@MainActivity, NotificationActivity::class.java)
                     )
+                },
+
+                onQuotesClick = {
+                    startActivity(
+                        Intent(this@MainActivity, QuotesActivity::class.java)
+                    )
                 }
 
 
@@ -214,7 +220,8 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun FirstScreen(onHomeClick: () -> Unit,
-                    onNotificationClick:() -> Unit) {
+                    onNotificationClick:() -> Unit,
+                    onQuotesClick:()-> Unit) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -242,6 +249,12 @@ class MainActivity : ComponentActivity() {
 
             Button(onClick = onNotificationClick) {
                 Text(text = "Go To Notification")
+            }
+
+            Spacer(modifier = Modifier.height(26.dp))
+
+            Button(onQuotesClick) {
+                Text(text = "Go To Quotes")
             }
         }
     }

@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 @Preview
 @Composable
 fun NotificationScreen(){
-    var count = rememberSaveable { mutableIntStateOf(0) }
+    val count = rememberSaveable { mutableIntStateOf(0) }
 
     Column(verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
