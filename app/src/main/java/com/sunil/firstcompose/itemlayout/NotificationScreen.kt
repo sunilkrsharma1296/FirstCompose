@@ -5,20 +5,31 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material3.Button
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.sunil.firstcompose.ui.theme.BlogAppTheme
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 @Preview
@@ -30,6 +41,10 @@ fun NotificationScreen(){
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(1f)
     ) {
+        CoroutineScopeComposable()
+        Spacer(modifier = Modifier.padding(10.dp))
+        ListComposable()
+        Spacer(modifier = Modifier.padding(10.dp))
         NotificationCounter(count.value, {count.value++})
         MessageBar(count.value)
     }
@@ -53,20 +68,110 @@ fun MessageBar(count: Int) {
 
 @Composable
 fun NotificationCounter(count: Int, increaseCount: () -> Int) {
+    var theme = remember { mutableStateOf(false) }
 
-    Column(
-        verticalArrangement = Arrangement.Center,
-    ) {
-        Text(text = "You have sent $count notification")
+    BlogAppTheme(darkTheme = theme.value) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+        ) {
+            Text(text = "You have sent $count notification")
 
-        Button(onClick = {
-            increaseCount()
+            Button(onClick = {
+                theme.value = !theme.value
 
-            Log.e("count", "$count")
+                increaseCount()
 
-        }) {
-            Text(text = "Send Notification")
+                Log.e("count", "$count")
+
+            }) {
+                Text(text = "Send Notification")
+            }
         }
     }
 
 }
+
+@Composable
+fun ListComposable(){
+    val categoryState = remember { mutableStateOf(emptyList<String>()) }
+
+    // When I want to execute once or on any condition, LaunchedEffect is used.
+    // Basically it is Coroutine Scope and composable.
+    LaunchedEffect(key1 = Unit) {
+        categoryState.value = fetchListCategory()
+    }
+
+    LazyColumn {
+        items(categoryState.value) {item ->
+            Text(text = item)
+        }
+    }
+}
+
+private fun fetchListCategory(): List<String> {
+    return listOf("Sunday","Monday","Tuesday")
+}
+
+
+@Composable
+fun CoroutineScopeComposable(){
+    val count = rememberSaveable { mutableIntStateOf(0) }
+    val scope = rememberCoroutineScope()
+
+    var text = "Counter is running ${count.value}"
+
+    if (count.intValue == 10) {
+        text = "Counter is stopped"
+    }
+
+    Column {
+        Text(text = text)
+        Button(onClick = {
+            scope.launch {
+                Log.e("coroutineLaunch","Started...")
+
+                try {
+                    for (i in 1..10) {
+                        delay(1000L)
+                        count.intValue++
+                    }
+
+                }catch (e: Exception){
+                    Log.e("coroutineLaunch","Exception:- ${e.message}")
+                }
+
+            }
+        }) {
+            Text(text = "Start")
+        }
+
+
+    }
+
+
+
+    LaunchedEffect(key1 = Unit) {
+        delay(1000)
+
+        count.intValue=10
+    }
+
+    Counter(count.value)
+
+
+}
+
+@Composable
+fun Counter(value: Int) {
+    val state  = rememberUpdatedState(value)
+    LaunchedEffect(key1 = value){
+        delay(5000)
+
+        Log.e("coroutineLaunch","Updated value:- ${state.value}")
+    }
+
+    Text(text = "Counter is $value")
+}
+
+
+
