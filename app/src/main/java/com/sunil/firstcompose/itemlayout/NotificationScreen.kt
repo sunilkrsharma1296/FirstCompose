@@ -53,8 +53,7 @@ fun NotificationScreen(){
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize(1f)
     ) {
-        Derived()
-        Loader()
+
         MediaComposable()
         CoroutineScopeComposable()
         Spacer(modifier = Modifier.padding(10.dp))
@@ -62,6 +61,11 @@ fun NotificationScreen(){
         Spacer(modifier = Modifier.padding(10.dp))
         NotificationCounter(count.value, {count.value++})
         MessageBar(count.value)
+
+        //Derived()
+
+        Loader()
+
     }
 }
 
@@ -220,7 +224,7 @@ fun Loader() {
     }
 
 
-    Box(contentAlignment = Alignment.Center,
+    Box(contentAlignment = Alignment.BottomCenter,
         modifier = Modifier
             .fillMaxSize(1f),
         content = {
@@ -255,9 +259,10 @@ fun Derived() {
         }
     }
 
-    Box(contentAlignment = Alignment.Top as Alignment,
+    Box(contentAlignment = Alignment.Center,
         modifier = Modifier
             .fillMaxSize(1f)
+            .size(40.dp, 120.dp)
     ){
         Text(text = message,
             style = MaterialTheme.typography.titleLarge)
