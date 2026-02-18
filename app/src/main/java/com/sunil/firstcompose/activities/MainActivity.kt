@@ -48,6 +48,8 @@ class MainActivity : ComponentActivity() {
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
+        //API= https://api.jsonbin.io/v3/b/6995c72ad0ea881f40c40e90?meta=false
+
         setContent {
             EdgeToEdgeScreen()
 

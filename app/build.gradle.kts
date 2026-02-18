@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("kapt")
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -39,6 +41,10 @@ android {
     buildFeatures {
         compose = true
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -65,4 +71,24 @@ dependencies {
     //new added
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.gson)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
+    // Optional (Jetpack Compose navigation)
+    implementation(libs.hilt.navigation.compose)
+
+    // ViewModel + Lifecycle
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.lifecycle.compose)
+
+    // Coroutines
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
 }
