@@ -1,4 +1,4 @@
-package com.sunil.firstcompose.itemlayout
+package com.sunil.firstcompose.listLayout
 
 import android.media.MediaPlayer
 import android.util.Log

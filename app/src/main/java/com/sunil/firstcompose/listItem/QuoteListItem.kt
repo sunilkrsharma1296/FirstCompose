@@ -1,4 +1,4 @@
-package com.sunil.firstcompose.list
+package com.sunil.firstcompose.listItem
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

@@ -1,4 +1,4 @@
-package com.sunil.firstcompose.itemlayout
+package com.sunil.firstcompose.listItem
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -27,44 +27,49 @@ import androidx.compose.ui.unit.dp
 import com.sunil.firstcompose.R
 import com.sunil.firstcompose.data.Quote
 
-
 @Composable
 fun QuoteDetailScreen(quote: Quote) {
-    Box(contentAlignment = Alignment.Center,
-        modifier = Modifier
+    Box(
+        contentAlignment = Alignment.Companion.Center,
+        modifier = Modifier.Companion
             .fillMaxSize(1f)
-            .background(Brush.sweepGradient(
-                colors = listOf(
-                    Color(0xFFffffff),
-                    Color(0xFFE3E3E3)
+            .background(
+                Brush.Companion.sweepGradient(
+                    colors = listOf(
+                        Color(0xFFffffff),
+                        Color(0xFFE3E3E3)
+                    )
                 )
-            ))
+            )
     ) {
         ElevatedCard(
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-            modifier = Modifier.padding(32.dp)
+            modifier = Modifier.Companion.padding(32.dp)
         ) {
-            Column (verticalArrangement = Arrangement.Center,
-                modifier = Modifier
+            Column(
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier.Companion
                     .padding(16.dp, 24.dp)
             ) {
                 Image(
                     imageVector = Icons.Filled.FormatQuote,
                     contentDescription = "Quote",
-                    modifier = Modifier
+                    modifier = Modifier.Companion
                         .size(80.dp)
                         .rotate(180F)
                 )
 
-                Text(quote.text,
+                Text(
+                    quote.text,
                     style = MaterialTheme.typography.bodyLarge,
                     fontFamily = FontFamily(Font(R.font.roboto_bold)),
-                    modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 2.dp)
+                    modifier = Modifier.Companion.padding(0.dp, 0.dp, 0.dp, 2.dp)
                 )
 
-                Spacer(modifier = Modifier.padding(4.dp))
+                Spacer(modifier = Modifier.Companion.padding(4.dp))
 
-                Text(quote.author,
+                Text(
+                    quote.author,
                     style = MaterialTheme.typography.bodyMedium,
                     fontFamily = FontFamily(Font(R.font.roboto_medium)),
 

@@ -1,12 +1,11 @@
-package com.sunil.firstcompose.itemlayout
+package com.sunil.firstcompose.listLayout
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import com.sunil.firstcompose.data.Quote
-import com.sunil.firstcompose.list.QuoteListItem
+import com.sunil.firstcompose.listItem.QuoteListItem
 
 @Composable
 fun QuoteList(data : Array<Quote>,

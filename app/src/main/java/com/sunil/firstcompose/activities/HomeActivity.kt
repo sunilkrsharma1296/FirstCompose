@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
-import com.sunil.firstcompose.itemlayout.CategoryListScreen
+import com.sunil.firstcompose.listItem.CategoryListScreen
 
 
 class HomeActivity : ComponentActivity() {

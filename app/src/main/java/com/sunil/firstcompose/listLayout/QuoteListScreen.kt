@@ -1,7 +1,6 @@
-package com.sunil.firstcompose.itemlayout
+package com.sunil.firstcompose.listLayout
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material3.MaterialTheme

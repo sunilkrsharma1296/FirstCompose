@@ -87,6 +87,12 @@ class MainActivity : ComponentActivity() {
                     startActivity(
                         Intent(this@MainActivity, QuotesActivity::class.java)
                     )
+                },
+
+                onTweetsClick = {
+                    startActivity(
+                        Intent(this@MainActivity, TweetActivity::class.java)
+                    )
                 }
 
 
@@ -221,9 +227,12 @@ class MainActivity : ComponentActivity() {
 
 
     @Composable
-    fun FirstScreen(onHomeClick: () -> Unit,
-                    onNotificationClick:() -> Unit,
-                    onQuotesClick:()-> Unit) {
+    fun FirstScreen(
+        onHomeClick: () -> Unit,
+        onNotificationClick: () -> Unit,
+        onQuotesClick: () -> Unit,
+        onTweetsClick: () -> Unit
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -241,22 +250,28 @@ class MainActivity : ComponentActivity() {
                     .border(2.dp, Color.Red, CircleShape)
             )
 
-            Spacer(modifier = Modifier.height(26.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Button(onClick = onHomeClick) {
                 Text(text = "Go To Home")
             }
 
-            Spacer(modifier = Modifier.height(26.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Button(onClick = onNotificationClick) {
                 Text(text = "Go To Notification")
             }
 
-            Spacer(modifier = Modifier.height(26.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Button(onQuotesClick) {
                 Text(text = "Go To Quotes")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(onTweetsClick) {
+                Text(text = "Go To Tweets")
             }
         }
     }

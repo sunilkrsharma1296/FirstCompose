@@ -1,7 +1,6 @@
 package com.sunil.firstcompose.activities
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
@@ -20,12 +19,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.sunil.firstcompose.data.Quote
-import com.sunil.firstcompose.itemlayout.QuoteDetailScreen
-import com.sunil.firstcompose.itemlayout.QuoteListScreen
+import com.sunil.firstcompose.listItem.QuoteDetailScreen
+import com.sunil.firstcompose.listLayout.QuoteListScreen
 import com.sunil.firstcompose.models.DataManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class QuotesActivity: ComponentActivity() {
