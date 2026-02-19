@@ -93,6 +93,12 @@ class MainActivity : ComponentActivity() {
                     startActivity(
                         Intent(this@MainActivity, TweetActivity::class.java)
                     )
+                },
+
+                onOnboardClick = {
+                    startActivity(
+                        Intent(this@MainActivity, OnboardActivity::class.java)
+                    )
                 }
 
 
@@ -231,7 +237,8 @@ class MainActivity : ComponentActivity() {
         onHomeClick: () -> Unit,
         onNotificationClick: () -> Unit,
         onQuotesClick: () -> Unit,
-        onTweetsClick: () -> Unit
+        onTweetsClick: () -> Unit,
+        onOnboardClick: () -> Unit
     ) {
         Column(
             modifier = Modifier
@@ -272,6 +279,12 @@ class MainActivity : ComponentActivity() {
 
             Button(onTweetsClick) {
                 Text(text = "Go To Tweets")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(onOnboardClick) {
+                Text(text = "Go To Onboard")
             }
         }
     }
