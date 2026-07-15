@@ -35,7 +35,6 @@ class QuotesActivity: ComponentActivity() {
             DataManager.loadAssetsFromFile(applicationContext)
         }
 
-//
 
         setContent {
             MainScreen()
